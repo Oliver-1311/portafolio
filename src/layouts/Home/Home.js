@@ -72,7 +72,7 @@ export const Home = () => {
   return (
     <div className={styles.home}>
       <Helmet>
-      <script defer src="https://analytics.tomasps.com/script.js" data-website-id="56f5d30c-a510-47a8-a1c7-1b69a9540f5e"></script>
+      <script defer src="https://analytics.tomasps.com/script.js" data-website-id="00b274e7-518b-4e00-a79c-9c29fe1d78f8"></script>
     </Helmet>
       <Meta
         title="Designer + Developer"

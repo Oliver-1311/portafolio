@@ -21,8 +21,6 @@ import { Helmet } from 'react-helmet';
 
 const disciplines = ['Developer', 'Photographer', 'Helper'];
 
-
-
 export const Home = () => {
   const [visibleSections, setVisibleSections] = useState([]);
   const [scrollIndicatorHidden, setScrollIndicatorHidden] = useState(false);
@@ -31,8 +29,7 @@ export const Home = () => {
   const projectTwo = useRef();
   const projectThree = useRef();
   const details = useRef();
-  
-  
+
   useEffect(() => {
     const sections = [intro, projectOne, projectTwo, projectThree, details];
 
@@ -72,11 +69,15 @@ export const Home = () => {
   return (
     <div className={styles.home}>
       <Helmet>
-      <script defer src="https://analytics.tomasps.com/script.js" data-website-id="00b274e7-518b-4e00-a79c-9c29fe1d78f8"></script>
-    </Helmet>
+        <script
+          defer
+          src="https://analytics.tomasps.com/script.js"
+          data-website-id="00b274e7-518b-4e00-a79c-9c29fe1d78f8"
+        ></script>
+      </Helmet>
       <Meta
         title="Designer + Developer"
-        description="Design portfolio of TomasPS — a product designer working on web & mobile
+        description="Design portfolio of Oliver Macedo — a product designer working on web & mobile
           apps with a focus on motion, experience design, and accessibility."
       />
       <Intro

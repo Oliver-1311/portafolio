@@ -20,7 +20,8 @@ import {
 import { media, rgbToThreeColor } from 'utils/style';
 import { cleanRenderer, cleanScene, removeLights } from 'utils/three';
 import styles from './DisplacementSphere.module.css';
-import fragShader from './displacementSphereFragment.glsl';
+import fragShaderDay from './displacementSphereFragmentDay.glsl';
+import fragShaderNight from './displacementSphereFragment.glsl';
 import vertShader from './displacementSphereVertex.glsl';
 
 const springConfig = {
@@ -77,7 +78,7 @@ export const DisplacementSphere = props => {
 
       shader.uniforms = uniforms.current;
       shader.vertexShader = vertShader;
-      shader.fragmentShader = fragShader;
+      shader.fragmentShader =  themeId === 'light' ? fragShaderDay : fragShaderNight;
     };
 
     startTransition(() => {

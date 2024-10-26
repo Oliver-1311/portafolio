@@ -1,10 +1,10 @@
 {
   "name": "portfolio",
   "version": "1.0.0",
-  "homepage": "https://tomasps.com",
-  "description": "Portfolio site for TomasPS",
+  "homepage": "https://olivermacedo.com",
+  "description": "Portfolio site for oliver macedo",
   "repository": "https://github.com/Tresillo2017/portfolio-1",
-  "author": "TomasPS <contact@tomasps.com>",
+  "author": "Oliver Macedo <contact@olivermacedo.com>",
   "devDependencies": {
     "@mapbox/rehype-prism": "^0.8.0",
     "@storybook/addon-a11y": "^6.5.10",
@@ -75,5 +75,6 @@
   "engines": {
     "npm": ">=8.6.0",
     "node": ">=18.0.0"
-  }
+  },
+  "packageManager": "yarn@4.5.0+sha512.837566d24eec14ec0f5f1411adb544e892b3454255e61fdef8fd05f3429480102806bac7446bc9daff3896b01ae4b62d00096c7e989f1596f2af10b927532f39"
 }

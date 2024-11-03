@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "homepage": "https://olivermacedo.com",
   "description": "Portfolio site for oliver macedo",
-  "repository": "https://github.com/Tresillo2017/portfolio-1",
+  "repository": "https://github.com/oliver-1311/portfolio",
   "author": "Oliver Macedo <contact@olivermacedo.com>",
   "devDependencies": {
     "@mapbox/rehype-prism": "^0.8.0",

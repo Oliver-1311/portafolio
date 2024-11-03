@@ -17,7 +17,6 @@ import { Profile } from 'layouts/Home/Profile';
 import { ProjectSummary } from 'layouts/Home/ProjectSummary';
 import { useEffect, useRef, useState } from 'react';
 import styles from './Home.module.css';
-import { Helmet } from 'react-helmet';
 
 const disciplines = ['Developer', 'Photographer', 'Helper'];
 
@@ -68,13 +67,6 @@ export const Home = () => {
 
   return (
     <div className={styles.home}>
-      <Helmet>
-        <script
-          defer
-          src="https://analytics.tomasps.com/script.js"
-          data-website-id="00b274e7-518b-4e00-a79c-9c29fe1d78f8"
-        ></script>
-      </Helmet>
       <Meta
         title="Designer + Developer"
         description="Design portfolio of Oliver Macedo — a product designer working on web & mobile

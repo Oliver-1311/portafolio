@@ -15,6 +15,7 @@ import {
   UniformsUtils,
   Vector2,
   WebGLRenderer,
+  LinearSRGBColorSpace,
   sRGBEncoding,
 } from 'three';
 import { media, rgbToThreeColor } from 'utils/style';
@@ -32,7 +33,7 @@ const springConfig = {
 
 export const DisplacementSphere = props => {
   const theme = useTheme();
-  const { rgbBackground, themeId, colorWhite } = theme;
+  const { themeId, colorWhite } = theme;
   const start = useRef(Date.now());
   const canvasRef = useRef();
   const mouse = useRef();
@@ -58,11 +59,11 @@ export const DisplacementSphere = props => {
       antialias: false,
       alpha: true,
       powerPreference: 'high-performance',
-      failIfMajorPerformanceCaveat: true,
+      failIfMajorPerformanceCaveat: false,
     });
     renderer.current.setSize(innerWidth, innerHeight);
     renderer.current.setPixelRatio(1);
-    renderer.current.outputEncoding = sRGBEncoding;
+    renderer.current.outputColorSpace = LinearSRGBColorSpace;
 
     camera.current = new PerspectiveCamera(54, innerWidth / innerHeight, 0.1, 100);
     camera.current.position.z = 52;
@@ -78,7 +79,7 @@ export const DisplacementSphere = props => {
 
       shader.uniforms = uniforms.current;
       shader.vertexShader = vertShader;
-      shader.fragmentShader =  themeId === 'light' ? fragShaderDay : fragShaderNight;
+      shader.fragmentShader = themeId === 'light' ? fragShaderDay : fragShaderNight;
     };
 
     startTransition(() => {
@@ -96,21 +97,20 @@ export const DisplacementSphere = props => {
   }, []);
 
   useEffect(() => {
-    const dirLight = new DirectionalLight(colorWhite, 0.6);
-    const ambientLight = new AmbientLight(colorWhite, themeId === 'light' ? 0.8 : 0.1);
+    const dirLight = new DirectionalLight(colorWhite, themeId === 'light' ? 0.4 : 0.7);
+    const ambientLight = new AmbientLight(colorWhite, themeId === 'light' ? 0.9 : 0.1);
 
     dirLight.position.z = 200;
     dirLight.position.x = 100;
     dirLight.position.y = 100;
 
     lights.current = [dirLight, ambientLight];
-    scene.current.background = new Color(...rgbToThreeColor(rgbBackground));
     lights.current.forEach(light => scene.current.add(light));
 
     return () => {
       removeLights(lights.current);
     };
-  }, [rgbBackground, colorWhite, themeId]);
+  }, [colorWhite, themeId]);
 
   useEffect(() => {
     const { width, height } = windowSize;

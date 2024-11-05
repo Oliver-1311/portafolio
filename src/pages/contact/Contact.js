@@ -14,60 +14,48 @@ import { useRef, useState } from 'react';
 import { cssProps, msToNum, numToMs } from 'utils/style';
 import styles from './Contact.module.css';
 import emailjs from '@emailjs/browser';
+import { Icon } from 'components/Icon';
 
 export const Contact = () => {
   const form = useRef();
-  // const errorRef = useRef();
+  const errorRef = useRef();
   const email = useFormInput('');
   const message = useFormInput('');
 
   const [sending, setSending] = useState(false);
   const [complete, setComplete] = useState(false);
-  // const [statusError, setStatusError] = useState('');
+  const [statusError, setStatusError] = useState('');
   const initDelay = tokens.base.durationS;
 
   const onSubmit = async event => {
     event.preventDefault();
-    // setStatusError('');
-
+    setStatusError('');
     if (sending) return;
 
     try {
       setSending(true);
-
-      // const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/message`, {
-      //   method: 'POST',
-      //   mode: 'cors',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify({
-      //     email: email.value,
-      //     message: message.value,
-      //   }),
-      // });
-      // console.log(form.current);
-      emailjs.sendForm('service_key', 'template_key', form.current, 'form').then(res => {
-        // setSenderEmail('');
-        // setSenderMsg('');
-        console.log(res);
-      });
-
-      // const responseMessage = await response.json();
-
-      // const statusError = getStatusError({
-      //   status: response?.status,
-      //   errorMessage: responseMessage?.error,
-      //   fallback: 'There was a problem sending your message',
-      // });
-
-      // if (statusError) throw new Error(statusError);
-
-      setComplete(true);
-      setSending(false);
+      emailjs
+        .sendForm(
+          process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+          process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+          form.current,
+          process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+        )
+        .then(
+          () => {
+            setComplete(true);
+            setSending(false);
+          },
+          error => {
+            setSending(false);
+            if (error.text) {
+              setStatusError('There was a problem sending your message');
+            }
+          }
+        );
     } catch (error) {
-      // setSending(false);
-      // setStatusError(error.message);
+      setSending(false);
+      setStatusError(error.message);
     }
   };
 
@@ -122,7 +110,7 @@ export const Contact = () => {
               maxLength={4096}
               {...message}
             />
-            {/* <Transition in={statusError} timeout={msToNum(tokens.base.durationM)}>
+            <Transition in={statusError} timeout={msToNum(tokens.base.durationM)}>
               {errorStatus => (
                 <div
                   className={styles.formError}
@@ -139,7 +127,7 @@ export const Contact = () => {
                   </div>
                 </div>
               )}
-            </Transition> */}
+            </Transition>
             <Button
               className={styles.button}
               data-status={status}
@@ -194,25 +182,6 @@ export const Contact = () => {
     </Section>
   );
 };
-
-// function getStatusError({
-//   status,
-//   errorMessage,
-//   fallback = 'There was a problem with your request',
-// }) {
-//   if (status === 200) return false;
-
-//   const statuses = {
-//     500: 'There was a problem with the server, try again later',
-//     404: 'There was a problem connecting to the server. Make sure you are connected to the internet',
-//   };
-
-//   if (errorMessage) {
-//     return errorMessage;
-//   }
-
-//   return statuses[status] || fallback;
-// }
 
 function getDelay(delayMs, offset = numToMs(0), multiplier = 1) {
   const numDelay = msToNum(delayMs) * multiplier;

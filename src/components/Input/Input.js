@@ -17,6 +17,7 @@ export const Input = ({
   onBlur,
   autoComplete,
   required,
+  name='',
   maxLength,
   type,
   onChange,
@@ -57,6 +58,7 @@ export const Input = ({
         </label>
         <InputElement
           className={styles.input}
+          name={name}
           id={inputId}
           aria-labelledby={labelId}
           aria-describedby={error ? errorId : undefined}

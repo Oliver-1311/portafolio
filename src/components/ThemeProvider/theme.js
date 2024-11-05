@@ -111,7 +111,7 @@ const dark = {
   themeId: 'dark',
   rgbBackground: 'oklch(17.76% 0 0)',
   rgbBackgroundLight: 'oklch(21.78% 0 0)',
-  rgbPrimary: '0 229 255',
+  rgbPrimary: '27 147 143',
   rgbAccent: '27, 147, 143',
   rgbText: '255 255 255',
   rgbError: '255 55 102',

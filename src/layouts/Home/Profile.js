@@ -1,5 +1,5 @@
 import profileKatakana from 'assets/katakana-profile.svg?url';
-import profileImgLarge from 'assets/profile-large.jpg';
+import profileImgLarge from 'assets/profile-large.jpeg';
 import profileImgPlaceholder from 'assets/profile-placeholder.jpg';
 import profileImg from 'assets/profile.jpg';
 import { Button } from 'components/Button';
@@ -21,15 +21,20 @@ const ProfileText = ({ visible, titleId }) => (
       <DecoderText text="Hi there" start={visible} delay={500} />
     </Heading>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      I’m Tomas, currently I live in Spain currently working in{' '}
-      <Link href="https://spainrp.me">SpainRP</Link>. My projects include UX design, UI
-      animations, and icon illustration. Being comfortable with code allows me to rapidly
-      prototype and validate experiences. If you’re interested in the tools and software I
-      use check out my <Link href="/uses">uses page</Link>.
+      Hi! I&apos;m Oliver Macedo, a Systems and Computer Engineering graduate from the{' '}
+      <Link href="https://www.unasam.edu.pe/">
+        Santiago Antúnez de Mayolo University.
+      </Link>
     </Text>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      In my spare time I like to take photos to things I see and like{' '}
-      <Link href="https://photography.tomasps.com">Website</Link>.
+      As a Full Stack Developer, I specialize in creating scalable and innovative
+      technological solutions that transform processes in sectors like e-commerce,
+      construction, and healthcare.
+    </Text>
+    <Text className={styles.description} data-visible={visible} size="l" as="p">
+      With experience mainly in Django, React, Next.js, and PostgreSQL, I design intuitive
+      and efficient platforms that enhance user experience and support strategic
+      decision-making.
     </Text>
   </Fragment>
 );
@@ -58,7 +63,7 @@ export const Profile = ({ id, visible, sectionRef }) => {
                 secondary
                 className={styles.button}
                 data-visible={visible}
-                href="mailto:contact@tomasps.com"
+                href="mailto:oliver13yms@gmail.com"
                 icon="send"
               >
                 Send me a message

@@ -11,29 +11,21 @@ export const navLinks = [
     label: 'Articles',
     pathname: '/articles',
   },
-  // {
-  //   label: 'Contact',
-  //   pathname: '/contact',
-  // },
   {
-    label: 'Photography',
-    pathname: 'https://photography.tomasps.com',
-  },
-  {
-    label: 'Drive',
-    pathname: 'https://drive.tomasps.com',
+    label: 'Contact',
+    pathname: '/contact',
   },
 ];
 
 export const socialLinks = [
   {
     label: 'Twitter',
-    url: 'https://twitter.com/toomas_ps',
+    url: 'https://x.com/OliverMacedo13',
     icon: 'twitter',
   },
   {
     label: 'Github',
-    url: 'https://github.com/Tresillo2017',
+    url: 'https://github.com/Oliver-1311',
     icon: 'github',
   },
 ];
